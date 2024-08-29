@@ -24,10 +24,6 @@ namespace ComicBookGallery.Controllers
                 "Colors: Edgar Delgado",
                 "Letters: Chris Eliopoulos"
             };
-            if (DateTime.Today.DayOfWeek == DayOfWeek.Monday)
-            {
-                return Redirect("/");
-            }
             return View();
         }
     }
