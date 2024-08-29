@@ -1,13 +1,17 @@
-﻿
+﻿@model ComicBookGallery.Models.ComicBook[]
 @{
-    Layout = "_Layout";
-    ViewBag.Title = "Home Comic Books";
+    ViewBag.Title = "Home View For Top Comic Books";
 }
+<h2>@ViewBag.Title</h2>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 offset-md-1">
-            <h1>Comic Books Home View</h1>
+<div class="row">
+    @foreach (var comicBook in Model)
+    {
+        <div class="col-md-3">
+            <h4>@comicBook.DisplayText</h4>
+            <img src="/img/@comicBook.CoverImageFileName"
+                 alt="@comicBook.DisplayText"
+                 class="img-responsive" />
         </div>
-    </div>
+    }
 </div>

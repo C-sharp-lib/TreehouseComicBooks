@@ -1,17 +1,30 @@
-﻿using ComicBookGallery.Models;
+﻿using ComicBookGallery.Data;
+using ComicBookGallery.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ComicBookGallery.Controllers
 {
     public class ComicBooksController : Controller
     {
-        // GET: ComicBooks
-        public ActionResult Index()
+        private ComicBookRepository _comicBookRepository;
+
+        public ComicBooksController()
         {
-            return View();
+            _comicBookRepository = new ComicBookRepository();
         }
-        public ActionResult Detail(ComicBook comicBook)
+        // GET: ComicBooks
+        public IActionResult Index()
         {
+            var comicBooks = _comicBookRepository.GetComicBooks();
+            return View(comicBooks);
+        }
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var comicBook = _comicBookRepository.GetComicBook(id.Value);
             return View(comicBook);
         }
     }
