@@ -8,7 +8,7 @@
 <div class="row">
     @foreach (var comicBook in Model)
     {
-        <div class="col-md-3">
+        <div class="col-md-4">
             <h4>@Html.ActionLink(comicBook.DisplayText, "Detail", new { id = comicBook.Id })</h4>
             <a href="@Url.Action("Detail", new { id = comicBook.Id })">
                 <img src="/img/@comicBook.CoverImageFileName"

@@ -27,15 +27,27 @@
             </div>
         </nav>
     </header>
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
+    @if (ViewBag.ShowSnackBar != null && ViewBag.ShowSnackBar)
+    {
+        <div class="container mt-5 mb-5">
+            <div class="row mt-5 mb-5">
+                <div class="col-12 mt-5 mb-5">
+                    <div class="alert alert-info mt-5 mb-5" role="alert">
+                        @Html.ActionLink("Return To List", "Index", null, new { @class = "btn btn-warning" });
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
     <footer class="border-top footer text-muted">
-        <div class="container-fluid">
-            &copy; 2024 - ComicBookGallery - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container-fluid btn">
+            &copy; 2024 - ComicBookGallery
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
